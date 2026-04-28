@@ -1,29 +1,36 @@
-/* -------------------------- 双主题色值定义（严格使用你给的配色） -------------------------- */
-/* 浅色模式（默认）：湖沼蓝背景 + 薄荷石绿强调 */
-:root {
-  /* 核心配色 */
-  --color-bg-page: #d7e6f2;    /* 湖沼蓝：页面全局背景 */
-  --color-bg-card: #e8f0f8;    /* 湖沼蓝浅1级：卡片背景 */
-  --color-border: #c5d8e8;     /* 湖沼蓝深1级：边框/分隔线 */
-  --color-btn-normal: #4c7264; /* 薄荷石绿：按钮默认色 */
-  --color-btn-hover: #3a5a4f;  /* 薄荷石绿加深：按钮悬浮色 */
+/* -------------------------- 色值变量定义（严格使用你指定的1/3/4号色） -------------------------- */
+/* 色卡从左到右顺序：
+1: #e9e9e4（最浅，奶白底色）
+2: #cad9c5（浅绿，辅助色）
+3: #e5e8c9（浅黄绿，卡片背景）
+4: #b0c7a8（中绿，按钮/强调色）
+5: #8da580（深绿，深色模式背景）
+*/
 
-  /* 文字配色 */
-  --color-text-main: #2d3d37;  /* 正文主色（深灰绿，高可读性） */
-  --color-text-title: #4c7264; /* 标题强调色（薄荷石绿） */
+/* 浅色模式（默认） */
+:root {
+  --color-bg-page: #e9e9e4;    /* 1号色：页面全局背景（奶白底色） */
+  --color-bg-card: #e5e8c9;    /* 3号色：内容卡片背景（浅黄绿） */
+  --color-border: #cad9c5;     /* 2号色：边框/分隔线（浅绿辅助色） */
+  --color-btn-normal: #b0c7a8; /* 4号色：按钮默认状态色（中绿） */
+  --color-btn-hover: #8da580;  /* 5号色：按钮悬浮加深（深绿，适配浅色模式） */
+
+  /* 文字配色（适配浅色背景，保证可读性） */
+  --color-text-main: #4a5a53;  /* 正文主色（深灰绿） */
+  --color-text-title: #5a7a6b; /* 标题强调色（中绿加深） */
 }
 
-/* 深色模式：薄荷石绿背景 + 湖沼蓝强调 */
+/* 深色模式 */
 body.dark-mode {
-  --color-bg-page: #4c7264;    /* 薄荷石绿：页面全局背景 */
-  --color-bg-card: #3a5a4f;    /* 薄荷石绿深1级：卡片背景 */
-  --color-border: #2d3d37;     /* 薄荷石绿深2级：边框/分隔线 */
-  --color-btn-normal: #d7e6f2; /* 湖沼蓝：按钮默认色 */
-  --color-btn-hover: #c5d8e8;  /* 湖沼蓝加深：按钮悬浮色 */
+  --color-bg-page: #8da580;    /* 5号色：页面全局背景（深绿底色） */
+  --color-bg-card: #b0c7a8;    /* 4号色：内容卡片背景（中绿） */
+  --color-border: #cad9c5;     /* 2号色：边框/分隔线（浅绿，适配深色） */
+  --color-btn-normal: #e5e8c9; /* 3号色：按钮默认状态色（浅黄绿，适配深色） */
+  --color-btn-hover: #e9e9e4;  /* 1号色：按钮悬浮色（奶白，适配深色） */
 
-  /* 文字配色（适配深色背景） */
-  --color-text-main: #f0f5f9;  /* 正文主色（浅白，高可读性） */
-  --color-text-title: #d7e6f2; /* 标题强调色（湖沼蓝） */
+  /* 文字配色（适配深色背景，高对比度） */
+  --color-text-main: #f0f5f0;  /* 正文主色（浅白） */
+  --color-text-title: #e9e9e4; /* 标题强调色（奶白） */
 }
 
 /* -------------------------- 全局基础重置 -------------------------- */
@@ -36,7 +43,6 @@ body.dark-mode {
 /* -------------------------- 全局平滑效果 -------------------------- */
 html {
   scroll-behavior: smooth;
-  /* 主题切换时全局颜色平滑过渡 */
   transition: background-color 0.3s ease;
 }
 
@@ -48,7 +54,6 @@ body {
   line-height: 1.8;
   min-height: 100vh;
   padding: 20px;
-  /* 主题切换时所有颜色平滑过渡 */
   transition: all 0.3s ease;
 
   /* 页面加载淡入动画 */
@@ -58,7 +63,7 @@ body {
 
 /* -------------------------- 主题切换按钮样式 -------------------------- */
 .theme-toggle-btn {
-  position: fixed; /* 固定在屏幕右上角，滑动不消失 */
+  position: fixed;
   top: 20px;
   right: 20px;
   padding: 10px 16px;
@@ -69,7 +74,7 @@ body {
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  z-index: 999; /* 保证按钮在最上层，不被其他内容挡住 */
+  z-index: 999;
   transition: all 0.3s ease;
 }
 
@@ -78,7 +83,7 @@ body {
   transform: scale(1.05);
 }
 
-/* 手机端适配：按钮缩小，不挡内容 */
+/* 手机端适配 */
 @media (max-width: 600px) {
   .theme-toggle-btn {
     top: 10px;
@@ -92,7 +97,7 @@ body {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding-top: 20px; /* 给固定的主题按钮留空间，避免内容被挡住 */
+  padding-top: 20px; /* 给主题按钮留空间 */
 }
 
 .btn-group {
