@@ -34,15 +34,15 @@
 /* 深色模式：只改文字颜色，其他所有颜色原样保留 */
 body.dark-mode {
   --color-bg-page: #8da580;
-  --color-bg-card: #b0c7a8;
+  --color-bg-card: #627c5f;
   --color-line: #e9e9e4;
 
   --color-btn-normal: #e5e8c9;
   --color-btn-hover: #cad9c5;
 
   /* 唯独这里改：深色文字加深，对比更明显，其余全部不动 */
-  --color-text-main: #627c5f;
-  --color-text-title: #627c5f;
+  --color-text-main: #b0c7a8;
+  --color-text-title: #b0c7a8;
 }
 
 /* ==============================================
