@@ -14,15 +14,15 @@
 
 /* 深色模式：外深、卡浅、字更浅（强制权重，无视缓存） */
 body.dark-mode {
-  --color-bg-page: #627c5f !important;
-  --color-bg-card: #8da580 !important;
+  --color-bg-page: #1a2a23 !important;
+  --color-bg-card: #45583a !important;
   --color-line: #e9e9e4 !important;
 
   --color-btn-normal: #e5e8c9 !important;
   --color-btn-hover: #cad9c5 !important;
 
-  --color-text-main: #d1ddcb !important;
-  --color-text-title: #d1ddcb !important;
+  --color-text-main: #a8c7bc !important;
+  --color-text-title: #a8c7bc !important;
 }
 
 /* ========== 全局样式重置 ========== */
