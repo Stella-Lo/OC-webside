@@ -1,219 +1,78 @@
-<!-- HTML5 网页标准文档声明 -->
 <!DOCTYPE html>
-<!-- 网页整体语言：中文 -->
 <html lang="zh-CN">
-
-<!-- 头部区域：网页配置、标题、样式全部写在这里 -->
-
 <head>
-    <!-- 统一文字编码，防止中文乱码 -->
-    <meta charset="UTF-8">
-    <!-- 适配手机/电脑屏幕，自动缩放 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 浏览器标签上显示的标题 -->
-    <title>首页 | 木乔的 OC主页</title>
-
-    <!-- CSS样式：控制页面背景、颜色、按钮、排版外观 -->
-    <style>
-        /* 全局重置：清除默认边距，统一盒模型 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* 页面整体基础样式 */
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background: #0f1814;
-            /* 整体背景：深绿色调 */
-            color: #e8f2ee;
-            /* 默认文字颜色：浅绿白 */
-            line-height: 1.8;
-            /* 行间距，阅读舒服 */
-            min-height: 100vh;
-            /* 至少占满一整个屏幕高度 */
-        }
-
-        /* 顶部大封面区域（首页大字标题那块） */
-        .hero {
-            width: 100%;
-            min-height: 60vh;
-            display: flex;
-            /* 弹性居中布局 */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(#14241e, #0f1814);
-            /* 渐变深色背景 */
-        }
-
-        /* 封面主标题 */
-        .hero h1 {
-            font-size: 42px;
-            color: #b8e8d8;
-            letter-spacing: 4px;
-            /* 字间距 */
-            margin-bottom: 15px;
-        }
-
-        /* 封面副标题小字 */
-        .hero p {
-            color: #a8c7bc;
-            max-width: 600px;
-            font-size: 16px;
-        }
-
-        /* 中间内容容器：限制宽度、居中 */
-        .container {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        /* 白色半透明卡片块（放文字内容） */
-        .card {
-            background: rgba(30, 50, 42, 0.45);
-            border-radius: 16px;
-            /* 圆角 */
-            padding: 30px;
-            border: 1px solid rgba(184, 232, 216, 0.25);
-            margin-bottom: 40px;
-        }
-
-        /* 卡片内部小标题 - 薄荷绿装饰线 */
-        .card h2 {
-            color: #c2e9dd;
-            margin-bottom: 16px;
-            border-left: 4px solid #48c9b0;
-            /* 左侧小绿线装饰（薄荷绿） */
-            padding-left: 12px;
-        }
-
-        /* 两个OC按钮的外层布局 */
-        .oc-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            /* 按钮之间的距离 */
-            margin-top: 50px;
-            flex-wrap: wrap;
-            /* 手机端自动换行 */
-        }
-
-        /* 按钮默认样式 - 薄荷绿主题 */
-        .oc-btn {
-            padding: 12px 36px;
-            border-radius: 30px;
-            background: rgba(72, 201, 176, 0.15);
-            /* 薄荷绿半透明背景 */
-            border: 1px solid #48c9b0;
-            /* 薄荷绿边框 */
-            color: #b8e8d8;
-            cursor: pointer;
-            /* 鼠标悬浮变成小手 */
-            transition: 0.3s ease;
-            /* 悬浮过渡动画 */
-        }
-
-        /* 鼠标放到按钮上的变色效果 - 薄荷绿实心 */
-        .oc-btn:hover {
-            background: #1abc9c;
-            /* 更鲜亮的薄荷绿 */
-            color: #0f1814;
-            box-shadow: 0 0 12px #48c9b0;
-            /* 薄荷绿光晕 */
-        }
-
-        /* 页面最底部页脚文字 */
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #77998c;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <!-- 适配手机端，防止缩放变形 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 | 木乔的OC主页</title>
+  <!-- 引入外部CSS样式文件，统一全站风格 -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<!-- body里是网页所有看得见的内容 -->
-
 <body>
-
-    <!-- 顶部封面区域 -->
-    <section class="hero">
-        <h1>Kyon × 烤炉先生</h1>
-        <p>在这里记录灵感与偏爱，收藏属于OC之间的温柔故事</p>
-    </section>
-
-    <!-- 中间主体内容 -->
-    <div class="container">
-        <!-- 第一块：自我介绍+创作想法 -->
-        <div class="card">
-            <h2>关于我 & 创作想法</h2>
-            <p>
-                可以在这里写下你的自我介绍、创作初心、喜欢的风格，
-                以及创造这对OC的想法、执念与心意。<br><br>
-                把脑海里的细碎温柔慢慢拼凑，留住每一段独属于他们的故事。
-            </p>
-        </div>
-
-        <!-- 第二块：跳转OC页面的按钮 -->
-        <div class="card">
-            <h2>前往角色档案</h2>
-            <p>点击下方按钮，输入密码查看角色档案</p>
-            <div class="oc-buttons">
-                <div class="oc-btn" onclick="checkPwd('Kyon.html')">Kyon</div>
-                <div class="oc-btn" onclick="checkPwd('kaolu.html')">烤炉先生</div>
-            </div>
-
-            <h2 style="margin-top:50px;">记录他们的故事</h2>
-            <p>在这里写下属于 Kyon 与 烤炉先生 的文字与心意</p>
-            <div class="oc-buttons">
-                <div class="oc-btn" onclick="checkPwd('article.html')">文章阅读</div>
-            </div>
-        </div>
+  <!-- 页面主体居中容器 -->
+  <div class="container">
+    <!-- 首页介绍卡片 -->
+    <div class="card">
+      <h1>木乔的OC主页</h1>
+      <p>把脑海里的细节温柔慢慢拼凑，留住每段独属于他们的故事。</p>
     </div>
 
-    <!-- 底部版权小字 -->
-    <footer>
-        Original Character | 木乔的私人OC世界
-    </footer>
+    <!-- 角色档案入口模块 -->
+    <div class="card">
+      <h2>前往角色档案</h2>
+      <p>点击下方按钮，输入密码查看角色档案</p>
+      <div class="btn-group">
+        <button class="oc-btn" onclick="checkPassword('Kyon.html')">Kyon</button>
+        <button class="oc-btn" onclick="checkPassword('kaolu.html')">烤炉先生</button>
+      </div>
+    </div>
 
-    <script>
-        // ========== 独立密码，自己随便改 ==========
-        const pwd_kyon = "Kyon";    // Kyon 密码
-        const pwd_kaolu = "烤炉";   // kaolu 密码
-        const pwd_wenzhang = "文章"; // 文章密码
+    <!-- 故事文章入口模块 -->
+    <div class="card">
+      <h2>记录他们的故事</h2>
+      <p>在这里写下属于Kyon与烤炉先生的文字与心意</p>
+      <div class="btn-group">
+        <button class="oc-btn" onclick="checkPassword('article.html')">文章阅读</button>
+      </div>
+    </div>
+  </div>
 
-        // 密码验证函数
-        function checkPwd(page) {
-            let pwd;
-            let title;
+  <!-- 页脚版权信息 -->
+  <footer>Original Character | 木乔的私人OC世界</footer>
 
-            if (page === "Kyon.html") {
-                pwd = pwd_kyon;
-                title = "Kyon 档案";
-            }
-            else if (page === "kaolu.html") {
-                pwd = pwd_kaolu;
-                title = "烤炉先生 档案";
-            }
-            else if (page === "article.html") {
-                pwd = pwd_wenzhang;
-                title = "他们的故事";
-            }
+  <!-- 密码验证JS脚本 -->
+  <script>
+    // 密码配置区，可自行修改对应页面的密码
+    const pwd_kyon = "Kyon";    // Kyon.html 页面密码
+    const pwd_kaolu = "烤炉";   // kaolu.html 页面密码
+    const pwd_wenzhang = "文章";// article.html 页面密码
 
-            let input = prompt("请输入【" + title + "】密码：");
-            if (input === pwd) {
-                window.location.href = page;
-            } else {
-                alert("密码错误，请重试");
-            }
-        }
-    </script>
+    // 密码验证核心函数
+    function checkPassword(page) {
+      let pwd;       // 对应页面的正确密码
+      let title;     // 弹窗提示的标题
 
+      // 根据跳转页面匹配对应密码和标题
+      if (page === "Kyon.html") {
+        pwd = pwd_kyon;
+        title = "Kyon 档案";
+      } else if (page === "kaolu.html") {
+        pwd = pwd_kaolu;
+        title = "烤炉先生";
+      } else if (page === "article.html") {
+        pwd = pwd_wenzhang;
+        title = "他们的故事";
+      }
+
+      // 弹出密码输入框
+      let input = prompt("请输入【" + title + "】密码: ");
+      // 密码正确则跳转页面，错误则弹出提示
+      if (input === pwd) {
+        window.location.href = page;
+      } else {
+        alert("密码错误，请重试");
+      }
+    }
+  </script>
 </body>
-
 </html>
