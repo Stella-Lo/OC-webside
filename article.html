@@ -1,34 +1,84 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>他们的故事 | 文章阅读</title>
-    <!-- 引入统一CSS样式 -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <!-- 适配手机端 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 浏览器标签标题 -->
+  <title>文章合集 | 木乔的OC世界</title>
+  <!-- 引入你网站的原有样式 -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* 文章栏目整体间距 */
+    .article-category { margin: 22px 0; }
+    /* 栏目标题样式 */
+    .article-category h3 { margin-bottom: 10px; color: var(--color-text-title); }
+    /* 文章标题样式 */
+    .article-item {
+      display: block;
+      line-height: 2.1;
+      text-decoration: none;
+      color: var(--color-text-main);
+    }
+    /* 鼠标悬浮时加粗 */
+    .article-item:hover { font-weight: bold; }
+    /* 按钮组布局 */
+    .btn-group {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- 文章标题卡片 -->
-        <div class="card">
-            <h1>他们的故事</h1>
-        </div>
+  <div class="container">
+    <div class="card">
+      <h2>📖 文章合集</h2>
+      <p>点击标题阅读</p>
+      <hr style="margin:16px 0;opacity:0.2;">
 
-        <!-- 文章正文模块 -->
-        <div class="card">
-            <p>此处可填写角色的故事、随笔、日常片段等内容</p>
-            <!-- 可自行替换/补充文章内容 -->
-        </div>
+      <!-- 文章目录会自动渲染到这里 -->
+      <div id="articleRoot"></div>
 
-        <!-- 返回首页按钮 -->
-        <div class="btn-group">
-            <a href="index.html" class="oc-btn">返回首页</a>
-        </div>
+      <!-- 按钮：返回上一页 + 返回首页 -->
+      <div class="btn-group">
+        <button class="oc-btn" onclick="history.back()">← 返回上一页</button>
+        <button class="oc-btn" onclick="location.href='index.html'">🏠 返回首页</button>
+      </div>
     </div>
+  </div>
 
-    <footer>Original Character | 木乔的OC世界</footer>
+  <!-- 1. 加载文章数据 -->
+  <script src="article-list.js"></script>
+
+  <!-- 2. 自动渲染栏目和文章 -->
+  <script>
+    // 获取页面容器
+    const root = document.getElementById('articleRoot');
+
+    // 循环遍历所有栏目
+    articleData.forEach(cat => {
+      // 创建栏目容器
+      const div = document.createElement('div');
+      div.className = 'article-category';
+
+      // 插入栏目名称
+      div.innerHTML = `<h3>${cat.category}</h3>`;
+
+      // 循环插入该栏目下的所有文章
+      cat.list.forEach(item => {
+        div.innerHTML += `<a class="article-item" href="${item.url}">${item.title}</a>`;
+      });
+
+      // 把栏目加到页面
+      root.appendChild(div);
+    });
+  </script>
+
+  <!-- 页脚 -->
+  <footer>Original Character | 木乔的私人OC世界</footer>
 </body>
-
 </html>
