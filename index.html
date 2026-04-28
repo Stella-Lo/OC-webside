@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <!-- 深浅模式切换按钮 -->
-<button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
 <head>
   <meta charset="UTF-8">
-  <!-- 适配手机端，防止缩放变形 -->
+  <!-- 适配手机端，不让页面变形 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>首页 | 木乔的OC主页</title>
-  <!-- 引入外部CSS样式文件，统一全站风格 -->
+  <!-- 浏览器标签页标题（顶部小标签文字） -->
+  <title>首页 | 木乔的OC世界</title>
+  <!-- 引入你的外部样式文件（控制颜色、布局） -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 页面主体居中容器 -->
-  <div class="container">
-    <!-- 首页介绍卡片 -->
-    <div class="card">
-      <h1>木乔的OC主页</h1>
-      <p>把脑海里的细节温柔慢慢拼凑，留住每段独属于他们的故事。</p>
-    </div>
 
-    <!-- 角色档案入口模块 -->
-    <div class="card">
-      <h2>前往角色档案</h2>
-      <p>点击下方按钮，输入密码查看角色档案</p>
-      <div class="btn-group">
-        <button class="oc-btn" onclick="checkPassword('Kyon.html')">Kyon</button>
-        <button class="oc-btn" onclick="checkPassword('kaolu.html')">烤炉先生</button>
-      </div>
-    </div>
+<!-- ===================== 左上角主标题 ===================== -->
+<!-- 文字内容：首页 | 木乔的OC世界 -->
+<!-- 自动跟随浅色/深色模式切换颜色 -->
+<h1 id="pageTitle" style="
+  position: fixed;     /* 固定在页面，不随滚动移动 */
+  top: 20px;           /* 距离顶部 20px */
+  left: 25px;          /* 距离左侧 25px */
+  margin: 0;           /* 去掉默认边距 */
+  font-size: 2.2rem;   /* 字体大小 */
+  font-weight: 600;    /* 字体粗细 */
+  z-index: 9999;       /* 保证在最上层，不被遮挡 */
+  color: var(--color-text-title); /* 自动跟随主题变色 */
+">首页 | 木乔的OC世界</h1>
 
-    <!-- 故事文章入口模块 -->
-    <div class="card">
-      <h2>记录他们的故事</h2>
-      <p>在这里写下属于Kyon与烤炉先生的文字与心意</p>
-      <div class="btn-group">
-        <button class="oc-btn" onclick="checkPassword('article.html')">文章阅读</button>
-      </div>
+<!-- ===================== 深浅模式切换按钮 ===================== -->
+<button class="theme-toggle-btn" id="themeToggle" style="
+  position: fixed;     /* 固定在右上角 */
+  top: 20px;           /* 距离顶部 */
+  right: 25px;         /* 距离右侧 */
+  z-index: 9999;       /* 放在最上层 */
+">切换浅色模式</button>
+
+<!-- ===================== 页面主体内容 ===================== -->
+<!-- 给顶部标题留出空间，避免被挡住 -->
+<div class="container" style="margin-top: 120px;">
+
+  <!-- 角色档案卡片 -->
+  <div class="card">
+    <h2>前往角色档案</h2>
+    <p>点击下方按钮，输入密码查看角色档案</p>
+    <div class="btn-group">
+      <button class="oc-btn" onclick="checkPassword('Kyon.html')">Kyon</button>
+      <button class="oc-btn" onclick="checkPassword('kaolu.html')">烤炉先生</button>
     </div>
   </div>
 
-  <!-- 页脚版权信息 -->
-  <footer>Original Character | 木乔的私人OC世界</footer>
-<!-- 深浅模式切换JS -->
+  <!-- 文章阅读卡片 -->
+  <div class="card">
+    <h2>记录他们的故事</h2>
+    <p>在这里写下属于Kyon与烤炉先生的文字与心意</p>
+    <div class="btn-group">
+      <button class="oc-btn" onclick="checkPassword('article.html')">文章阅读</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 页脚 ===================== -->
+<footer>Original Character | 木乔的私人OC世界</footer>
+
+<!-- ===================== 深浅模式切换 JS ===================== -->
 <script>
-  // 获取按钮和页面body
+  // 获取按钮和页面主体
   const themeToggle = document.getElementById('themeToggle');
   const body = document.body;
 
-  // 页面加载时，读取之前保存的主题设置
+  // 读取本地保存的主题（记住用户上次选择）
   const savedTheme = localStorage.getItem('ocTheme');
+
+  // 如果保存的是深色，默认加载深色模式
   if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
     themeToggle.innerText = '切换浅色模式';
@@ -56,52 +77,52 @@
 
   // 点击按钮切换主题
   themeToggle.addEventListener('click', () => {
-    // 切换深色模式class
-    body.classList.toggle('dark-mode');
-    
-    // 切换按钮文字
+    body.classList.toggle('dark-mode'); // 切换模式
+
+    // 根据模式修改按钮文字
     if (body.classList.contains('dark-mode')) {
       themeToggle.innerText = '切换浅色模式';
-      localStorage.setItem('ocTheme', 'dark'); // 保存到本地
+      localStorage.setItem('ocTheme', 'dark');
     } else {
       themeToggle.innerText = '切换深色模式';
-      localStorage.setItem('ocTheme', 'light'); // 保存到本地
+      localStorage.setItem('ocTheme', 'light');
     }
   });
 </script>
-  <!-- 密码验证JS脚本 -->
-  <script>
-    // 密码配置区，可自行修改对应页面的密码
-    const pwd_kyon = "Kyon";    // Kyon.html 页面密码
-    const pwd_kaolu = "烤炉";   // kaolu.html 页面密码
-    const pwd_wenzhang = "文章";// article.html 页面密码
 
-    // 密码验证核心函数
-    function checkPassword(page) {
-      let pwd;       // 对应页面的正确密码
-      let title;     // 弹窗提示的标题
+<!-- ===================== 密码验证功能 ===================== -->
+<script>
+  // 三个页面的密码（可自行修改）
+  const pwd_kyon = "Kyon";
+  const pwd_kaolu = "烤炉";
+  const pwd_wenzhang = "文章";
 
-      // 根据跳转页面匹配对应密码和标题
-      if (page === "Kyon.html") {
-        pwd = pwd_kyon;
-        title = "Kyon 档案";
-      } else if (page === "kaolu.html") {
-        pwd = pwd_kaolu;
-        title = "烤炉先生";
-      } else if (page === "article.html") {
-        pwd = pwd_wenzhang;
-        title = "他们的故事";
-      }
+  // 密码验证主函数
+  function checkPassword(page) {
+    let pwd;   // 正确密码
+    let title; // 弹窗提示文字
 
-      // 弹出密码输入框
-      let input = prompt("请输入【" + title + "】密码: ");
-      // 密码正确则跳转页面，错误则弹出提示
-      if (input === pwd) {
-        window.location.href = page;
-      } else {
-        alert("密码错误，请重试");
-      }
+    // 根据不同页面匹配密码
+    if (page === "Kyon.html") {
+      pwd = pwd_kyon;
+      title = "Kyon 档案";
+    } else if (page === "kaolu.html") {
+      pwd = pwd_kaolu;
+      title = "烤炉先生";
+    } else if (page === "article.html") {
+      pwd = pwd_wenzhang;
+      title = "他们的故事";
     }
-  </script>
+
+    // 弹出输入框
+    let input = prompt("请输入【" + title + "】密码: ");
+    // 正确 → 跳转；错误 → 提示
+    if (input === pwd) {
+      window.location.href = page;
+    } else {
+      alert("密码错误，请重试");
+    }
+  }
+</script>
 </body>
 </html>
