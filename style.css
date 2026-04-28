@@ -1,40 +1,49 @@
 /* ==============================================
-   全局色卡定义
-   色卡从左至右：
-   1 #e9e9e4｜2 #cad9c5｜3 #e5e8c9｜4 #b0c7a8｜5 #8da580
-   配色规则：
-   浅色模式 = 1 + 3 + 4
-   深色模式 = 5 + 3 + 1
-============================================== */
-:root {
-  /* 浅色模式主色 */
-  --color-bg-page: #e9e9e4;    /* 1号：页面整体背景底色 */
-  --color-bg-card: #e5e8c9;    /* 3号：内容卡片背景色 */
-  --color-line: #b0c7a8;       /* 4号：全局所有边框线条，统一按钮色系 */
-  --color-btn-normal: #b0c7a8; /* 4号：按钮默认底色 */
-  --color-btn-hover: #9ab098;  /* 按钮悬浮加深色 */
+   色卡变量定义（严格按你手写配置）
+   【浅色模式】
+   1 背景：#e5e8c9
+   2 标题/正文：#8da580（已设置标题正文同色）
+   3 卡片：#e9e9e4
+   4 按钮默认：#cad9c5
+   5 按钮悬浮加深：#b0c7a8
 
-  /* 浅色模式文字色 */
-  --color-text-main: #4a5a53;  /* 正文常规文字颜色 */
-  --color-text-title: #5a7a6b; /* 标题强调文字颜色 */
+   【深色模式】
+   1 背景：#8da580
+   2 标题/正文：#cad9c5（已设置标题正文同色）
+   3 卡片：#b0c7a8
+   4 按钮默认：#e9e9e4
+   5 按钮悬浮加深：#e5e8c9
+============================================== */
+
+/* 浅色模式（默认生效） */
+:root {
+  --color-bg-page: #e5e8c9;    /* 浅色1：页面全局背景底色 */
+  --color-bg-card: #e9e9e4;    /* 浅色3：内容卡片背景色 */
+  --color-line: #cad9c5;       /* 浅色4：全局边框/线条，与按钮同色 */
+  --color-btn-normal: #cad9c5; /* 浅色4：按钮默认底色 */
+  --color-btn-hover: #b0c7a8;  /* 浅色5：按钮悬浮加深色（你指定的第5号） */
+
+  /* 浅色模式文字：标题与正文同色，用浅色2号色 */
+  --color-text-main: #8da580;
+  --color-text-title: #8da580;
 }
 
-/* 深色模式配色规则：5 3 1 */
+/* 深色模式（切换后生效） */
 body.dark-mode {
-  --color-bg-page: #8da580;    /* 5号：深色模式页面背景 */
-  --color-bg-card: #e5e8c9;    /* 3号：卡片背景保持不变，保证对比度 */
-  --color-line: #e9e9e4;       /* 1号：深色模式边框线条 */
-  --color-btn-normal: #e9e9e4; /* 1号：深色模式按钮底色 */
-  --color-btn-hover: #cad9c5;  /* 深色按钮悬浮过渡色 */
+  --color-bg-page: #8da580;    /* 深色1：深色模式页面背景 */
+  --color-bg-card: #b0c7a8;    /* 深色3：深色模式卡片背景 */
+  --color-line: #e9e9e4;       /* 深色4：深色模式边框/线条，与按钮同色 */
+  --color-btn-normal: #e9e9e4; /* 深色4：深色模式按钮默认底色 */
+  --color-btn-hover: #e5e8c9;  /* 深色5：深色模式按钮悬浮加深色（你指定的第5号） */
 
-  /* 深色模式文字色 */
-  --color-text-main: #f0f5f0;  /* 深色背景下正文浅色文字 */
-  --color-text-title: #e9e9e4; /* 深色背景下标题浅色文字 */
+  /* 深色模式文字：标题与正文同色，用深色2号色 */
+  --color-text-main: #cad9c5;
+  --color-text-title: #cad9c5;
 }
 
 /* ==============================================
    全局基础重置
-   清除浏览器默认边距，统一盒模型
+   清除浏览器默认边距，统一盒模型，避免样式错乱
 ============================================== */
 * {
   margin: 0;
@@ -44,7 +53,7 @@ body.dark-mode {
 
 /* ==============================================
    全局平滑滚动
-   页面滚动、锚点跳转自动平滑过渡
+   页面滚动、锚点跳转自动平滑过渡，无生硬跳转
 ============================================== */
 html {
   scroll-behavior: smooth;
@@ -53,56 +62,50 @@ html {
 
 /* ==============================================
    页面整体基础样式
+   定义全局字体、背景、文字色、淡入动画
 ============================================== */
 body {
-  /* 通用兼容字体 */
-  font-family: "Segoe UI", "Microsoft Yahei", sans-serif;
-  /* 读取变量背景色 */
-  background-color: var(--color-bg-page);
-  /* 读取变量文字色 */
-  color: var(--color-text-main);
-  /* 正文行高，提升阅读舒适度 */
-  line-height: 1.8;
-  /* 最小高度占满全屏 */
-  min-height: 100vh;
-  /* 页面整体内边距，防止内容贴边 */
-  padding: 20px;
-  /* 所有样式切换平滑动画 */
-  transition: all 0.3s ease;
+  font-family: "Segoe UI", "Microsoft Yahei", sans-serif; /* 通用兼容字体 */
+  background-color: var(--color-bg-page); /* 读取主题背景色变量 */
+  color: var(--color-text-main);          /* 读取主题正文色变量 */
+  line-height: 1.8;                       /* 正文行高，提升阅读舒适度 */
+  min-height: 100vh;                      /* 最小高度占满全屏，避免短页面留白 */
+  padding: 20px;                          /* 页面内边距，防止内容贴边 */
+  transition: all 0.3s ease;              /* 所有样式切换平滑动画 */
 
-  /* 页面初始淡入动画 */
+  /* 页面载入淡入动画：从透明+轻微下移，平滑过渡到正常状态 */
   opacity: 0;
   animation: fadeInPage 0.8s ease forwards;
 }
 
 /* ==============================================
-   深色/浅色模式切换按钮（已修复配色问题）
-   跟随全局按钮配色，深浅模式自动变色
+   深浅模式切换按钮（已修复配色问题）
+   跟随全局按钮变量，深浅模式自动变色，不再透明
 ============================================== */
 .theme-toggle-btn {
-  position: fixed;
+  position: fixed;       /* 固定在右上角，滚动不消失 */
   top: 20px;
   right: 20px;
   padding: 10px 16px;
-  border-radius: 30px;
-  /* 套用全局按钮变量色，不会再无色 */
-  background-color: var(--color-btn-normal);
-  border: 1px solid var(--color-line);
-  color: var(--color-bg-page);
+  border-radius: 30px;   /* 大圆角，与其他按钮风格统一 */
+  background-color: var(--color-btn-normal); /* 跟随主题按钮色 */
+  border: 1px solid var(--color-line);       /* 边框与按钮同色 */
+  color: var(--color-bg-page);               /* 文字色与背景对比 */
   border: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  z-index: 999;
+  z-index: 999; /* 保证按钮在最上层，不被其他内容挡住 */
   transition: all 0.3s ease;
 }
 
+/* 切换按钮悬浮效果：跟随全局按钮悬浮色 */
 .theme-toggle-btn:hover {
   background-color: var(--color-btn-hover);
-  transform: scale(1.05);
+  transform: scale(1.05); /* 轻微放大，提升交互感 */
 }
 
-/* 手机端适配切换按钮 */
+/* 手机端适配：缩小按钮，避免遮挡内容 */
 @media (max-width: 600px) {
   .theme-toggle-btn {
     top: 10px;
@@ -113,36 +116,36 @@ body {
 }
 
 /* ==============================================
-   居中容器
+   页面居中容器
    限制页面最大宽度，大屏不会过宽，自动居中
 ============================================== */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding-top: 20px;
+  max-width: 800px; /* 内容最大宽度，适配大多数设备 */
+  margin: 0 auto;   /* 水平居中 */
+  padding-top: 20px;/* 给顶部切换按钮留空间，避免内容被遮挡 */
 }
 
 /* ==============================================
    按钮组布局
-   多个按钮自动居中、自动换行
+   多个按钮自动居中、自动换行，适配手机端
 ============================================== */
 .btn-group {
   display: flex;
-  gap: 20px;                /* 按钮之间间距 */
-  flex-wrap: wrap;          /* 手机端自动换行 */
+  gap: 20px;                /* 按钮之间的间距 */
+  flex-wrap: wrap;          /* 手机端自动换行，避免内容溢出 */
   justify-content: center;  /* 整体水平居中 */
-  margin-top: 20px;
+  margin-top: 20px;         /* 与上方内容的间距 */
 }
 
 /* ==============================================
    标题通用样式
-   h1 h2 h3 统一标题配色与间距
+   所有h1/h2/h3统一配色与间距，已设置标题与正文同色
 ============================================== */
 h1, h2, h3 {
-  color: var(--color-text-title);
+  color: var(--color-text-title); /* 与正文同色，跟随主题变化 */
   font-weight: 600;
-  margin-bottom: 16px;
-  line-height: 1.4;
+  margin-bottom: 16px; /* 标题与下方内容的间距 */
+  line-height: 1.4;    /* 标题行高，避免过挤 */
   transition: color 0.3s ease;
 }
 
@@ -151,16 +154,16 @@ h1, h2, h3 {
    所有内容卡片统一外观、圆角、阴影、悬浮效果
 ============================================== */
 .card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-line); /* 边框统一按钮色系 */
-  border-radius: 16px;
-  padding: 30px;
-  margin-bottom: 40px;
+  background-color: var(--color-bg-card); /* 读取主题卡片背景色 */
+  border: 1px solid var(--color-line);   /* 边框与按钮同色，统一风格 */
+  border-radius: 16px; /* 柔和圆角 */
+  padding: 30px;       /* 卡片内边距 */
+  margin-bottom: 40px; /* 卡片之间的上下间距 */
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 柔和阴影，增加层次感 */
 }
 
-/* 卡片悬浮：轻微上浮 + 加深阴影 */
+/* 卡片悬浮效果：轻微上浮 + 加深阴影，提升交互感 */
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
@@ -173,32 +176,32 @@ h1, h2, h3 {
 .oc-btn {
   padding: 12px 36px;
   border-radius: 30px;
-  background-color: var(--color-btn-normal);
-  border: 1px solid var(--color-line);
-  color: var(--color-bg-page);
+  background-color: var(--color-btn-normal); /* 跟随主题按钮默认色 */
+  border: 1px solid var(--color-line);       /* 边框与按钮同色 */
+  color: var(--color-bg-page);               /* 文字色与背景对比 */
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none; /* 消除a标签默认下划线 */
   display: inline-block;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-/* 按钮悬浮效果 */
+/* 按钮悬浮效果：使用你指定的第5号加深色 */
 .oc-btn:hover {
   background-color: var(--color-btn-hover);
   color: var(--color-bg-page);
-  transform: scale(1.05);
+  transform: scale(1.05); /* 轻微放大，提升交互感 */
 }
 
 /* ==============================================
    人设简历表格样式
-   角色资料表格整体样式
+   角色资料表格整体样式，边框统一按钮色
 ============================================== */
 .role-table {
   width: 100%;
-  border-collapse: collapse; /* 合并表格双线边框 */
+  border-collapse: collapse; /* 合并表格双线边框，避免重复线条 */
   margin: 10px 0;
   transition: all 0.3s ease;
 }
@@ -206,74 +209,76 @@ h1, h2, h3 {
 /* 表格单元格通用样式 */
 .role-table th, .role-table td {
   padding: 12px 15px;
-  border: 1px solid var(--color-line); /* 表格边框统一按钮色 */
+  border: 1px solid var(--color-line); /* 表格边框与按钮同色 */
   text-align: left;
-  vertical-align: top;
+  vertical-align: top; /* 内容顶部对齐，适配长文本 */
   transition: all 0.3s ease;
 }
 
-/* 表格左侧表头栏 */
+/* 表格左侧表头栏：背景与按钮同色，文字与背景对比 */
 .role-table th {
   background-color: var(--color-btn-normal);
   color: var(--color-bg-page);
   font-weight: 600;
-  width: 25%;
-  white-space: nowrap;
+  width: 25%;         /* 固定表头宽度，表格更整齐 */
+  white-space: nowrap;/* 防止短标签换行 */
 }
 
-/* 表格内容填写区域底色 */
+/* 表格内容填写区域：半透明白底，突出内容 */
 .role-table td {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ==============================================
    背景经历板块样式
-   已移除板块分隔线，纯板块排版
+   已移除板块分隔线，纯板块排版，更简洁
 ============================================== */
 .section-block {
   padding: 15px 0;
-  /* 已删除原有分隔线 border-bottom */
+  /* 已删除原有分隔线border-bottom，按你要求移除 */
   margin-bottom: 15px;
   transition: all 0.3s ease;
 }
 
-/* 最后一个板块取消底部外边距 */
+/* 最后一个板块取消底部外边距，避免多余留白 */
 .section-block:last-child {
   margin-bottom: 0;
 }
 
-/* 板块小标题 */
+/* 板块小标题：与正文同色，保持统一风格 */
 .section-block h3 {
   font-size: 17px;
   margin-bottom: 10px;
   color: var(--color-text-title);
 }
 
-/* 板块内列表缩进 */
+/* 板块内列表缩进，适配关键节点时间线 */
 .section-block ul {
   padding-left: 25px;
   margin: 10px 0;
 }
 
-/* 列表单项间距 */
+/* 列表单项间距，避免过挤 */
 .section-block li {
   margin-bottom: 8px;
 }
 
 /* ==============================================
    页脚样式
+   弱化处理，不抢主体风头，文字与标题同色
 ============================================== */
 footer {
   text-align: center;
   padding: 40px 0;
   color: var(--color-text-title);
-  opacity: 0.7;
+  opacity: 0.7; /* 半透明弱化 */
   font-size: 14px;
   transition: color 0.3s ease;
 }
 
 /* ==============================================
    页面载入淡入动画
+   页面加载时从透明+轻微下移，平滑过渡到正常状态
 ============================================== */
 @keyframes fadeInPage {
   from {
@@ -288,20 +293,20 @@ footer {
 
 /* ==============================================
    手机端响应式适配
-   屏幕宽度小于600px自动调整尺寸
+   屏幕宽度小于600px时，自动调整尺寸，适配手机
 ============================================== */
 @media (max-width: 600px) {
   .role-table th {
-    width: 35%;
+    width: 35%;       /* 加宽表头，避免文字换行错乱 */
     white-space: normal;
   }
   .card {
-    padding: 20px;
+    padding: 20px; /* 缩小卡片内边距，适配小屏幕 */
   }
   body {
-    padding: 15px;
+    padding: 15px; /* 缩小页面全局内边距 */
   }
   .container {
-    padding-top: 40px;
+    padding-top: 40px; /* 给切换按钮留更多空间 */
   }
 }
