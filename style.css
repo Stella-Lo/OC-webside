@@ -33,8 +33,8 @@
 
 /* 深色模式：只改文字颜色，其他所有颜色原样保留 */
 body.dark-mode {
-  --color-bg-page: #8da580;
-  --color-bg-card: #627c5f;
+  --color-bg-page: #627c5f;
+  --color-bg-card: #8da580;
   --color-line: #e9e9e4;
 
   --color-btn-normal: #e5e8c9;
