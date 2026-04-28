@@ -1,110 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>羁绊文章 | Kyon × 烤炉先生</title>
-    <style>
-        /* 全局样式统一，适配长文阅读 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background: #0f1814;
-            color: #e8f2ee;
-            line-height: 2.2; /* 行间距加大，长文阅读不费眼 */
-        }
-        /* 返回首页按钮（固定，不遮挡文字） */
-        .back-home {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 8px 20px;
-            border-radius: 30px;
-            border: 1px solid #86c9b4;
-            color: #b8e8d8;
-            text-decoration: none;
-            font-size: 14px;
-            background: rgba(30,50,42,0.5);
-            z-index: 10; /* 确保按钮在最上层，不被长文遮挡 */
-        }
-        /* 顶部标题区（简洁不占地方） */
-        .hero {
-            min-height: 30vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(#14241e, #0f1814);
-        }
-        .hero h1 {
-            font-size: 36px;
-            color: #b8e8d8;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            color: #a8c7bc;
-            font-size: 15px;
-        }
-        /* 内容容器：居中、限制宽度，长文不拉伸 */
-        .container {
-            max-width: 850px; /* 加宽容器，长文更舒展 */
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        /* 文章主容器：适配长文，不拥挤 */
-        .article-box {
-            background: rgba(30,50,42,0.45);
-            border-radius: 16px;
-            padding: 50px; /* 加大内边距，文字不贴边 */
-            border: 1px solid rgba(184,232,216,0.25);
-        }
-        /* 正文段落：自动缩进、自动分段，粘贴即适配 */
-        .article-box p {
-            margin-bottom: 2rem; /* 段落间距加大，区分清晰 */
-            text-indent: 2em; /* 首行自动缩进，符合中文长文习惯 */
-            font-size: 16px; /* 字体加大，阅读更舒服 */
-        }
-        /* 可选：小标题样式（你想给长文分章节时用） */
-        .article-box h3 {
-            color: #b8e8d8;
-            margin: 3rem 0 1rem;
-            border-left: 3px solid #86c9b4;
-            padding-left: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>他们的故事 | 文章阅读</title>
+  <!-- 引入统一CSS样式 -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- 返回首页按钮（点击直接回首页） -->
-<a href="index.html" class="back-home">← 返回首页</a>
-
-<!-- 顶部标题区 -->
-<section class="hero">
-    <h1>Kyon × 烤炉先生 | 专属随笔</h1>
-    <p>为他们写下的故事与碎片（长文适配版）</p>
-</section>
-
-<!-- 长文区域：直接粘贴TXT内容即可，自动适配 -->
-<div class="container">
-    <div class="article-box">
-        <!-- 👇 从这里开始，删掉示例，全选TXT粘贴进去就行 -->
-        <!-- 粘贴后自动分段、自动缩进，不用手动调 -->
-        <p>在这里粘贴你的长文内容……</p>
-        <p>粘贴后，每一段会自动缩进、自动留间距，哪怕几千字、几万字都能完美适配</p>
-        
-        <!-- 可选：如果想分章节，用下面的小标题 -->
-        <h3>第一章 相遇</h3>
-        <p>粘贴对应章节的内容……</p>
-        
-        <h3>第二章 羁绊</h3>
-        <p>粘贴对应章节的内容……</p>
+  <div class="container">
+    <!-- 文章标题卡片 -->
+    <div class="card">
+      <h1>他们的故事</h1>
     </div>
-</div>
 
+    <!-- 文章正文模块 -->
+    <div class="card">
+      <p>此处可填写角色的故事、随笔、日常片段等内容</p>
+      <!-- 可自行替换/补充文章内容 -->
+    </div>
+
+    <!-- 返回首页按钮 -->
+    <div class="btn-group">
+      <a href="index.html" class="oc-btn">返回首页</a>
+    </div>
+  </div>
+
+  <footer>Original Character | 木乔的OC世界</footer>
 </body>
 </html>
