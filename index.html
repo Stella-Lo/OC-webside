@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+  <!-- 深浅模式切换按钮 -->
+<button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
 <head>
   <meta charset="UTF-8">
   <!-- 适配手机端，防止缩放变形 -->
@@ -39,7 +41,34 @@
 
   <!-- 页脚版权信息 -->
   <footer>Original Character | 木乔的私人OC世界</footer>
+<!-- 深浅模式切换JS -->
+<script>
+  // 获取按钮和页面body
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
 
+  // 页面加载时，读取之前保存的主题设置
+  const savedTheme = localStorage.getItem('ocTheme');
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.innerText = '切换浅色模式';
+  }
+
+  // 点击按钮切换主题
+  themeToggle.addEventListener('click', () => {
+    // 切换深色模式class
+    body.classList.toggle('dark-mode');
+    
+    // 切换按钮文字
+    if (body.classList.contains('dark-mode')) {
+      themeToggle.innerText = '切换浅色模式';
+      localStorage.setItem('ocTheme', 'dark'); // 保存到本地
+    } else {
+      themeToggle.innerText = '切换深色模式';
+      localStorage.setItem('ocTheme', 'light'); // 保存到本地
+    }
+  });
+</script>
   <!-- 密码验证JS脚本 -->
   <script>
     // 密码配置区，可自行修改对应页面的密码
