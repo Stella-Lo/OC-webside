@@ -36,11 +36,11 @@ body.dark-mode {
   --color-line: #e9e9e4;
 
   /* 互换：按钮色换成原来标题色，标题色换成原来按钮色 */
-  --color-btn-normal: #e5e8c9;
+  --color-btn-normal: #cad9c5;
   --color-btn-hover: #cad9c5;
 
-  --color-text-main: #cad9c5;
-  --color-text-title: #cad9c5;
+  --color-text-main: #e5e8c9;
+  --color-text-title: #e5e8c9;
 }
 
 /* ==============================================
