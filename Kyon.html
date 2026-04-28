@@ -1,150 +1,176 @@
-<!-- HTML5 网页标准文档声明 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<!-- 头部区域：配置、标题、样式 -->
 <head>
-    <!-- 统一文字编码，防止中文乱码 -->
-    <meta charset="UTF-8">
-    <!-- 适配手机/电脑屏幕，自动缩放 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 浏览器标签标题：KyonOC档案 -->
-    <title>Kyon | 角色档案</title>
-
-    <!-- CSS样式：和首页统一绿色系，保持风格一致 -->
-    <style>
-        /* 全局重置：清除默认边距，统一盒模型 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* 页面整体基础样式，和首页一致 */
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background: #0f1814;    /* 整体背景：深绿色调 */
-            color: #e8f2ee;         /* 默认文字颜色：浅绿白 */
-            line-height: 1.8;       /* 行间距，阅读舒服 */
-        }
-
-        /* 返回首页按钮：固定在左上角 */
-        .back-home {
-            position: fixed;        /* 固定位置，滚动页面也不消失 */
-            top: 20px;              /* 距离顶部20px */
-            left: 20px;             /* 距离左侧20px */
-            padding: 8px 20px;
-            border-radius: 30px;    /* 圆角按钮 */
-            border: 1px solid #86c9b4;
-            color: #b8e8d8;
-            text-decoration: none;  /* 去掉链接下划线 */
-            font-size: 14px;
-            background: rgba(30,50,42,0.5); /* 半透明背景 */
-        }
-
-        /* Kyon页面顶部封面（大字标题区域） */
-        .hero {
-            min-height: 50vh;       /* 封面高度，比首页略矮 */
-            display: flex;          /* 弹性居中布局 */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 80px;      /* 留出返回按钮的位置 */
-            background: linear-gradient(#14241e, #0f1814); /* 渐变背景，和首页一致 */
-        }
-
-        /* Kyon页面主标题 */
-        .hero h1 {
-            font-size: 40px;
-            color: #b8e8d8;
-        }
-
-        /* 中间内容容器：限制宽度、居中，和首页一致 */
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        /* 每个板块的小标题（人设档案、角色故事等） */
-        .section-title {
-            font-size: 22px;
-            color: #c2e9dd;
-            margin: 40px 0 20px;    /* 上下间距，区分板块 */
-            border-left: 4px solid #86c9b4; /* 左侧小绿线装饰，和首页一致 */
-            padding-left: 12px;
-        }
-
-        /* 内容卡片：半透明样式，和首页卡片风格统一 */
-        .card {
-            background: rgba(30,50,42,0.45);
-            border-radius: 16px;    /* 圆角 */
-            padding: 30px;
-            border: 1px solid rgba(184,232,216,0.25);
-            margin-bottom: 30px;    /* 卡片之间的间距 */
-        }
-
-        /* 角色图集布局：自动分行，适配不同屏幕 */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); /* 自动分栏 */
-            gap: 16px;              /* 图片之间的间距 */
-        }
-
-        /* 图集图片容器：固定比例，防止图片变形 */
-        .gallery-item {
-            aspect-ratio: 4/5;      /* 图片比例（宽:高），适配OC立绘 */
-            background: rgba(45,70,60,0.5);
-            border-radius: 12px;    /* 图片圆角 */
-            border: 1px solid rgba(184,232,216,0.2);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <!-- 适配手机端，防止缩放变形 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyon | 角色档案</title>
+  <!-- 引入统一CSS样式，和全站风格保持一致 -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<!-- body里是KyonOC页面所有看得见的内容 -->
 <body>
-
-    <!-- 返回首页按钮：点击直接回到首页 -->
-    <a href="index.html" class="back-home">← 返回首页</a>
-
-    <!-- 顶部封面区域：显示Kyon标题和标语 -->
-    <section class="hero">
-        <h1>Kyon</h1>
-        <p>青涩温柔 · 山野般干净</p> <!-- Kyon人设标语，可自行修改 -->
-    </section>
-
-    <!-- 中间主体内容：人设、故事、图集 -->
-    <div class="container">
-        <!-- 第一板块：人设档案 -->
-        <h2 class="section-title">人设档案</h2>
-        <div class="card">
-            <p>姓名：</p>          <!-- 填写KyonOC姓名 -->
-            <p>性别：</p>          <!-- 填写性别 -->
-            <p>年龄：</p>          <!-- 填写年龄 -->
-            <p>性格：</p>          <!-- 填写性格（如：青涩、温柔、活泼等） -->
-            <p>喜好：</p>          <!-- 填写喜好（如：绿植、晴天、甜食等） -->
-            <p>厌恶：</p>          <!-- 填写厌恶（如：嘈杂、敷衍等） -->
-            <p>身份设定：</p>      <!-- 填写身份（如：学生、山野Kyon等） -->
-        </div>
-
-        <!-- 第二板块：角色故事 -->
-        <h2 class="section-title">角色故事</h2>
-        <div class="card">
-            <p>在这里填写Kyon的身世、性格细节、经历，以及和社畜之间的羁绊故事。
-                可以分段写，详细描述Kyon的过往、和社畜相遇的过程，
-                把你脑海里的故事慢慢写下来即可。</p>
-        </div>
-
-        <!-- 第三板块：角色图集 -->
-        <h2 class="section-title">角色图集</h2>
-        <div class="gallery">
-            <!-- 图集占位：后续插入图片时，替换这里的内容即可 -->
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-        </div>
+  <!-- 页面主体居中容器 -->
+  <div class="container">
+    <!-- 角色标题卡片 -->
+    <div class="card">
+      <h1>Kyon · 人设档案</h1>
     </div>
 
+    <!-- 【基础信息表】简历核心模块1：角色基础资料 -->
+    <div class="card">
+      <h2>一、基础信息</h2>
+      <table class="role-table">
+        <tr>
+          <th>角色姓名</th>
+          <td>Kyon</td> <!-- 这里可修改角色名字 -->
+        </tr>
+        <tr>
+          <th>核心人设</th>
+          <td>少年×社畜</td> <!-- 这里填写核心人设标签 -->
+        </tr>
+        <tr>
+          <th>年龄/生日</th>
+          <td>待填写</td> <!-- 这里填写年龄、生日 -->
+        </tr>
+        <tr>
+          <th>身高/体型</th>
+          <td>待填写</td> <!-- 这里填写身高、体型特征 -->
+        </tr>
+        <tr>
+          <th>职业/身份</th>
+          <td>待填写</td> <!-- 这里填写角色职业、社会身份 -->
+        </tr>
+      </table>
+    </div>
+
+    <!-- 【外貌特征表】简历核心模块2：角色外观设定 -->
+    <div class="card">
+      <h2>二、外貌特征</h2>
+      <table class="role-table">
+        <tr>
+          <th>发型/发色</th>
+          <td>待填写</td> <!-- 这里填写发型、发色、发质等 -->
+        </tr>
+        <tr>
+          <th>五官/瞳色</th>
+          <td>待填写</td> <!-- 这里填写五官特点、瞳色、眼神等 -->
+        </tr>
+        <tr>
+          <th>日常穿搭</th>
+          <td>待填写</td> <!-- 这里填写日常穿衣风格、标志性穿搭 -->
+        </tr>
+        <tr>
+          <th>标志性特征</th>
+          <td>待填写</td> <!-- 这里填写痣、伤疤、配饰等专属特征 -->
+        </tr>
+      </table>
+    </div>
+
+    <!-- 【性格特质表】简历核心模块3：角色性格设定 -->
+    <div class="card">
+      <h2>三、性格特质</h2>
+      <table class="role-table">
+        <tr>
+          <th>核心性格</th>
+          <td>待填写</td> <!-- 这里填写角色核心性格标签 -->
+        </tr>
+        <tr>
+          <th>优点</th>
+          <td>待填写</td> <!-- 这里填写角色的性格优点 -->
+        </tr>
+        <tr>
+          <th>缺点/雷区</th>
+          <td>待填写</td> <!-- 这里填写角色的性格短板、不能碰的雷区 -->
+        </tr>
+        <tr>
+          <th>喜好/偏爱</th>
+          <td>待填写</td> <!-- 这里填写角色喜欢的事物、食物、场景等 -->
+        </tr>
+        <tr>
+          <th>厌恶/恐惧</th>
+          <td>待填写</td> <!-- 这里填写角色讨厌、害怕的事物 -->
+        </tr>
+      </table>
+    </div>
+
+    <!-- 【背景经历板块】简历核心模块4：角色故事背景（板块式，自由书写） -->
+    <div class="card">
+      <h2>四、背景经历</h2>
+      
+      <!-- 板块1：成长背景（长文本自由书写） -->
+      <div class="section-block">
+        <h3>▌成长背景</h3>
+        <p>这里填写角色的成长环境、童年经历、家庭氛围等长文本内容，不受表格限制，可自由分段、换行，写详细的故事内容。</p>
+        <p>可自由补充段落，写多段长文本，适配大段的故事描述。</p>
+      </div>
+
+      <!-- 板块2：关键人生节点（时间线列表，清晰明了） -->
+      <div class="section-block">
+        <h3>▌关键人生节点</h3>
+        <ul>
+          <li>节点1：这里填写第一个改变角色的关键事件、时间、发生的故事</li>
+          <li>节点2：这里填写第二个关键人生转折点，可长可短</li>
+          <li>节点3：可自由增减节点，用列表清晰呈现角色的人生时间线</li>
+        </ul>
+      </div>
+
+      <!-- 板块3：当前生活状态 -->
+      <div class="section-block">
+        <h3>▌当前生活状态</h3>
+        <p>这里填写角色当下的生活、工作、日常状态，和烤炉先生的相处日常等内容，可自由发挥。</p>
+      </div>
+
+      <!-- 板块4：人生目标与执念 -->
+      <div class="section-block">
+        <h3>▌人生目标与执念</h3>
+        <p>这里填写角色的人生追求、想要守护的人/事、内心的执念、未完成的心愿等内容。</p>
+      </div>
+    </div>
+
+    <!-- 【人物关系表】简历核心模块5：角色社交关系 -->
+    <div class="card">
+      <h2>五、人物关系</h2>
+      <table class="role-table">
+        <tr>
+          <th>核心关联人物</th>
+          <td>烤炉先生</td> <!-- 这里填写核心绑定的角色 -->
+        </tr>
+        <tr>
+          <th>两人关系</th>
+          <td>待填写</td> <!-- 这里填写和核心角色的关系、相处模式 -->
+        </tr>
+        <tr>
+          <th>其他重要人物</th>
+          <td>待填写</td> <!-- 这里填写其他亲友、对手等角色 -->
+        </tr>
+      </table>
+    </div>
+
+    <!-- 【专属细节表】简历核心模块6：角色专属补充设定 -->
+    <div class="card">
+      <h2>六、专属细节补充</h2>
+      <table class="role-table">
+        <tr>
+          <th>隐藏设定</th>
+          <td>待填写</td> <!-- 这里填写不对外的隐藏人设、秘密 -->
+        </tr>
+        <tr>
+          <th>特殊能力/设定</th>
+          <td>待填写</td> <!-- 这里填写超能力、特殊设定等（如有） -->
+        </tr>
+        <tr>
+          <th>其他备注</th>
+          <td>待填写</td> <!-- 这里填写其他想要补充的设定 -->
+        </tr>
+      </table>
+    </div>
+
+    <!-- 返回首页按钮 -->
+    <div class="btn-group">
+      <a href="index.html" class="oc-btn">返回首页</a>
+    </div>
+  </div>
+
+  <footer>Original Character | 木乔的OC世界</footer>
 </body>
 </html>
