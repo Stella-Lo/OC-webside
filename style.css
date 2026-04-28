@@ -1,169 +1,136 @@
-/* ==============================================
-   色卡变量定义
-   【浅色模式】
-   1 背景：#e5e8c9
-   2 标题/正文：#8da580
-   3 卡片：#e9e9e4
-   4 按钮默认：#cad9c5
-   5 按钮悬浮加深：#b0c7a8
-
-   浅色规则：
-   浅色按钮常态 = 原悬浮加深 #b0c7a8
-   浅色按钮悬浮 = 标题色 #8da580
-
-   深色规则：
-   背景/卡片/按钮/线条 全部原样不动
-   【仅单独加深文字颜色】提高卡片内文字对比度
-============================================== */
-
-/* 浅色模式（默认生效，完全不变） */
+/* ========== 主题颜色变量 ========== */
+/* 浅色模式
+页面背景：#e5e8c9
+卡片背景：#e9e9e4
+边框线条：#cad9c5
+按钮常态：#b0c7a8
+按钮悬浮：#8da580
+正文/标题文字：#8da580 */
 :root {
-  --color-bg-page: #e5e8c9;    /* 浅色1：页面全局背景底色 */
-  --color-bg-card: #e9e9e4;    /* 浅色3：内容卡片背景色 */
-  --color-line: #cad9c5;       /* 浅色4：全局边框/线条 */
+  --color-bg-page: #e5e8c9;
+  --color-bg-card: #e9e9e4;
+  --color-line: #cad9c5;
   
-  /* 浅色按钮配色 */
-  --color-btn-normal: #b0c7a8; /* 浅色常态按钮 = 原悬浮加深色 */
-  --color-btn-hover: #8da580;  /* 浅色悬浮 = 标题正文色 */
+  --color-btn-normal: #b0c7a8;
+  --color-btn-hover: #8da580;
 
-  /* 标题正文同色 */
   --color-text-main: #8da580;
   --color-text-title: #8da580;
 }
 
-/* 深色模式：只改文字颜色，其他所有颜色原样保留 */
+/* 深色模式（已互换背景和卡片颜色）
+页面背景：#8da580
+卡片背景：#627c5f
+边框线条：#e9e9e4
+按钮常态：#e5e8c9
+按钮悬浮：#cad9c5
+正文/标题文字：#b0c7a8 */
 body.dark-mode {
-  --color-bg-page: #627c5f;
-  --color-bg-card: #8da580;
+  --color-bg-page: #8da580;
+  --color-bg-card: #627c5f;
   --color-line: #e9e9e4;
 
   --color-btn-normal: #e5e8c9;
   --color-btn-hover: #cad9c5;
 
-  /* 唯独这里改：深色文字加深，对比更明显，其余全部不动 */
   --color-text-main: #b0c7a8;
   --color-text-title: #b0c7a8;
 }
 
-/* ==============================================
-   全局基础重置
-============================================== */
+/* ========== 全局样式重置 ========== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ==============================================
-   全局平滑滚动
-============================================== */
+/* ========== 全局滚动与过渡 ========== */
 html {
-  scroll-behavior: smooth;
-  transition: background-color 0.3s ease;
+  scroll-behavior: smooth; /* 平滑滚动 */
+  transition: background-color 0.3s ease; /* 背景色过渡动画 */
 }
 
-/* ==============================================
-   页面整体基础样式
-============================================== */
+/* ========== 页面主体基础样式 ========== */
 body {
-  font-family: "Segoe UI", "Microsoft Yahei", sans-serif;
-  background-color: var(--color-bg-page);
-  color: var(--color-text-main);
-  line-height: 1.8;
-  min-height: 100vh;
-  padding: 20px;
-  transition: all 0.3s ease;
+  font-family: "Segoe UI", "Microsoft Yahei", sans-serif; /* 全局字体 */
+  background-color: var(--color-bg-page); /* 读取主题背景色 */
+  color: var(--color-text-main); /* 读取主题文字色 */
+  line-height: 1.8; /* 全局行高 */
+  min-height: 100vh; /* 页面至少占满一屏高度 */
+  padding: 20px; /* 页面整体内边距 */
+  transition: all 0.3s ease; /* 全部属性过渡动画 */
 
   opacity: 0;
-  animation: fadeInPage 0.8s ease forwards;
+  animation: fadeInPage 0.8s ease forwards; /* 页面载入淡入动画 */
 }
 
-/* ==============================================
-   深浅模式切换按钮
-============================================== */
+/* ========== 主题切换按钮样式 ========== */
 .theme-toggle-btn {
-  position: fixed;
+  position: fixed; /* 固定定位悬浮在页面 */
   top: 20px;
   right: 20px;
   padding: 10px 16px;
-  border-radius: 30px;
-  background-color: var(--color-btn-normal);
-  border: 1px solid var(--color-line);
-  color: var(--color-bg-page);
+  border-radius: 30px; /* 圆角按钮 */
+  background-color: var(--color-btn-normal); /* 按钮主题底色 */
+  border: 1px solid var(--color-line); /* 按钮边框 */
+  color: var(--color-bg-page); /* 按钮文字色 */
   border: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  z-index: 999;
+  z-index: 999; /* 最高层级防止被遮挡 */
   transition: all 0.3s ease;
 }
 
+/* 切换按钮悬浮效果 */
 .theme-toggle-btn:hover {
-  background-color: var(--color-btn-hover);
-  transform: scale(1.05);
+  background-color: var(--color-btn-hover); /* 悬浮底色切换 */
+  transform: scale(1.05); /* 轻微放大 */
 }
 
-@media (max-width: 600px) {
-  .theme-toggle-btn {
-    top: 10px;
-    right: 10px;
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-}
-
-/* ==============================================
-   页面居中容器
-============================================== */
+/* ========== 居中容器 ========== */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 800px; /* 容器最大宽度 */
+  margin: 0 auto; /* 水平居中 */
   padding-top: 20px;
 }
 
-/* ==============================================
-   按钮组布局
-============================================== */
+/* ========== 按钮组布局 ========== */
 .btn-group {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 20px; /* 按钮之间间距 */
+  flex-wrap: wrap; /* 自动换行适配手机 */
+  justify-content: center; /* 整体居中 */
   margin-top: 20px;
 }
 
-/* ==============================================
-   标题通用样式（标题正文同色）
-============================================== */
+/* ========== 标题通用样式 ========== */
 h1, h2, h3 {
-  color: var(--color-text-title);
+  color: var(--color-text-title); /* 标题主题色 */
   font-weight: 600;
   margin-bottom: 16px;
   line-height: 1.4;
   transition: color 0.3s ease;
 }
 
-/* ==============================================
-   卡片模块样式
-============================================== */
+/* ========== 卡片模块样式 ========== */
 .card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-line);
+  background-color: var(--color-bg-card); /* 卡片主题背景色 */
+  border: 1px solid var(--color-line); /* 卡片边框 */
   border-radius: 16px;
   padding: 30px;
   margin-bottom: 40px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 卡片阴影 */
 }
 
+/* 卡片悬浮上浮效果 */
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* ==============================================
-   全局按钮样式
-============================================== */
+/* ========== 全局通用按钮样式 ========== */
 .oc-btn {
   padding: 12px 36px;
   border-radius: 30px;
@@ -173,7 +140,7 @@ h1, h2, h3 {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none; /* 去除a标签下划线 */
   display: inline-block;
   text-align: center;
   transition: all 0.3s ease;
@@ -185,12 +152,10 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 
-/* ==============================================
-   人设简历表格样式
-============================================== */
+/* ========== 表格样式 ========== */
 .role-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: collapse; /* 合并表格边框 */
   margin: 10px 0;
   transition: all 0.3s ease;
 }
@@ -203,27 +168,28 @@ h1, h2, h3 {
   transition: all 0.3s ease;
 }
 
+/* 表格表头样式 */
 .role-table th {
-  background-color: var(--color-btn-normal);
+  background-color: var(--color-btn-normal); /* 表头沿用按钮色 */
   color: var(--color-bg-page);
   font-weight: 600;
   width: 25%;
-  white-space: nowrap;
+  white-space: nowrap; /* 文字不换行 */
 }
 
+/* 表格单元格底色 */
 .role-table td {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* ==============================================
-   背景经历板块样式（已去掉分隔线）
-============================================== */
+/* ========== 内容板块区域 ========== */
 .section-block {
   padding: 15px 0;
   margin-bottom: 15px;
   transition: all 0.3s ease;
 }
 
+/* 最后一个板块取消底边距 */
 .section-block:last-child {
   margin-bottom: 0;
 }
@@ -234,6 +200,7 @@ h1, h2, h3 {
   color: var(--color-text-title);
 }
 
+/* 列表缩进 */
 .section-block ul {
   padding-left: 25px;
   margin: 10px 0;
@@ -243,21 +210,17 @@ h1, h2, h3 {
   margin-bottom: 8px;
 }
 
-/* ==============================================
-   页脚样式
-============================================== */
+/* ========== 页脚样式 ========== */
 footer {
   text-align: center;
   padding: 40px 0;
   color: var(--color-text-title);
-  opacity: 0.7;
+  opacity: 0.7; /* 透明度弱化 */
   font-size: 14px;
   transition: color 0.3s ease;
 }
 
-/* ==============================================
-   页面载入淡入动画
-============================================== */
+/* ========== 页面淡入动画定义 ========== */
 @keyframes fadeInPage {
   from {
     opacity: 0;
@@ -269,9 +232,7 @@ footer {
   }
 }
 
-/* ==============================================
-   手机端响应式适配
-============================================== */
+/* ========== 手机端响应式适配 ========== */
 @media (max-width: 600px) {
   .role-table th {
     width: 35%;
