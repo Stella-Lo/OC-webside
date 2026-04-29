@@ -34,6 +34,12 @@
 </head>
 
 <body>
+
+<!-- ===================== 【仅新增】固定顶部按钮（不遮挡、不修改原有内容） ===================== -->
+<a href="index.html" class="back-home">返回首页</a>
+<button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
+<!-- ======================================================================================== -->
+
   <div class="container">
     <div class="card">
       <h2>📖 文章合集</h2>
@@ -77,6 +83,30 @@
       root.appendChild(div);
     });
   </script>
+
+<!-- ===================== 【仅新增】深浅色切换JS（跨页同步+记忆） ===================== -->
+<script>
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const savedTheme = localStorage.getItem('ocTheme');
+
+if(savedTheme === 'dark'){
+  body.classList.add('dark-mode');
+  themeToggle.textContent = '切换浅色模式';
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  if(body.classList.contains('dark-mode')){
+    themeToggle.textContent = '切换浅色模式';
+    localStorage.setItem('ocTheme','dark');
+  }else{
+    themeToggle.textContent = '切换深色模式';
+    localStorage.setItem('ocTheme','light');
+  }
+});
+</script>
+<!-- ==================================================================================== -->
 
   <!-- 页脚 -->
   <footer>Original Character | 木乔的私人OC世界</footer>

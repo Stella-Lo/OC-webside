@@ -9,11 +9,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- 新增：深浅模式切换按钮 -->
+<button class="theme-toggle-btn" id="themeToggle" style="
+  position: fixed;     /* 固定在右上角 */
+  top: 20px;           /* 距离顶部 */
+  right: 25px;         /* 距离右侧 */
+  z-index: 9999;       /* 放在最上层 */
+">切换浅色模式</button>
+
   <!-- 页面主体居中容器 -->
   <div class="container">
     <!-- 角色标题卡片 -->
     <div class="card">
       <h1>烤炉先生 · 人设档案</h1>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 【基础信息表】简历核心模块1：角色基础资料 -->
@@ -42,6 +52,7 @@
           <td>社畜</td> <!-- 这里填写角色职业、社会身份 -->
         </tr>
       </table>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 【外貌特征表】简历核心模块2：角色外观设定 -->
@@ -65,6 +76,7 @@
           <td>半框眼镜</td> <!-- 这里填写痣、伤疤、配饰等专属特征 -->
         </tr>
       </table>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 【性格特质表】简历核心模块3：角色性格设定 -->
@@ -92,6 +104,7 @@
           <td>待完善</td> <!-- 这里填写角色讨厌、害怕的事物 -->
         </tr>
       </table>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 【背景经历板块】简历核心模块4：角色故事背景（板块式，自由书写） -->
@@ -126,6 +139,7 @@
         <h3>▌人生目标与执念</h3>
         <p>这里填写角色的人生追求、想要守护的人/事、内心的执念、未完成的心愿等内容。</p>
       </div>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 【人物关系表】简历核心模块5：角色社交关系 -->
@@ -145,6 +159,7 @@
           <td>从小陪到大的小女孩</td> <!-- 这里填写其他亲友、对手等角色 -->
         </tr>
       </table>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 【专属细节表】简历核心模块6：角色专属补充设定 -->
@@ -164,6 +179,7 @@
           <td>待填写</td> <!-- 这里填写其他想要补充的设定 -->
         </tr>
       </table>
+      <span class="corner-rabbit">🐰</span>
     </div>
 
     <!-- 返回首页按钮 -->
@@ -174,4 +190,32 @@
 
   <footer>Original Character | 木乔的OC世界</footer>
 </body>
+<script>
+  // 获取按钮和页面主体
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // 读取本地保存的主题（记住用户上次选择）
+  const savedTheme = localStorage.getItem('ocTheme');
+
+  // 如果保存的是深色，默认加载深色模式
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.innerText = '切换浅色模式';
+  }
+
+  // 点击按钮切换主题
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode'); // 切换模式
+
+    // 根据模式修改按钮文字
+    if (body.classList.contains('dark-mode')) {
+      themeToggle.innerText = '切换浅色模式';
+      localStorage.setItem('ocTheme', 'dark');
+    } else {
+      themeToggle.innerText = '切换深色模式';
+      localStorage.setItem('ocTheme', 'light');
+    }
+  });
+</script>
 </html>

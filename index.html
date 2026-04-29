@@ -2,127 +2,69 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <!-- 适配手机端，不让页面变形 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 浏览器标签页标题（顶部小标签文字） -->
   <title>首页 | 木乔的OC世界</title>
-  <!-- 引入你的外部样式文件（控制颜色、布局） -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===================== 左上角主标题 ===================== -->
-<!-- 文字内容：首页 | 木乔的OC世界 -->
-<!-- 自动跟随浅色/深色模式切换颜色 -->
 <h1 id="pageTitle" style="
-  position: fixed;     /* 固定在页面，不随滚动移动 */
-  top: 20px;           /* 距离顶部 20px */
-  left: 25px;          /* 距离左侧 25px */
-  margin: 0;           /* 去掉默认边距 */
-  font-size: 2.2rem;   /* 字体大小 */
-  font-weight: 600;    /* 字体粗细 */
-  z-index: 9999;       /* 保证在最上层，不被遮挡 */
-  color: var(--color-text-title); /* 自动跟随主题变色 */
+  position: fixed;top: 20px;left: 25px;margin: 0;
+  font-size: 2.2rem;font-weight: 600;z-index: 9999;
+  color: var(--color-text-title);
 ">首页 | 木乔的OC世界</h1>
 
-<!-- ===================== 深浅模式切换按钮 ===================== -->
-<button class="theme-toggle-btn" id="themeToggle" style="
-  position: fixed;     /* 固定在右上角 */
-  top: 20px;           /* 距离顶部 */
-  right: 25px;         /* 距离右侧 */
-  z-index: 9999;       /* 放在最上层 */
-">切换浅色模式</button>
+<!-- 统一切换按钮 -->
+<button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
 
-<!-- ===================== 页面主体内容 ===================== -->
-<!-- 给顶部标题留出空间，避免被挡住 -->
 <div class="container" style="margin-top: 120px;">
-
-  <!-- 角色档案卡片 -->
   <div class="card">
     <h2>前往角色档案</h2>
     <p>点击下方按钮，输入密码查看角色档案</p>
     <div class="btn-group">
-      <button class="oc-btn" onclick="checkPassword('Kyon.html')">Kyon</button>
-      <button class="oc-btn" onclick="checkPassword('kaolu.html')">烤炉先生</button>
+      <button class="oc-btn" onclick="checkPassword('Kyon.html')">Kyon🐱</button>
+      <button class="oc-btn" onclick="checkPassword('kaolu.html')">烤炉先生🐰</button>
     </div>
+    <span class="corner-cat">🐱</span>
+    <span class="corner-rabbit">🐰</span>
   </div>
 
-  <!-- 文章阅读卡片 -->
   <div class="card">
     <h2>记录他们的故事</h2>
     <p>在这里写下属于Kyon与烤炉先生的文字与心意</p>
     <div class="btn-group">
-      <button class="oc-btn" onclick="checkPassword('article.html')">文章阅读</button>
+      <button class="oc-btn" onclick="checkPassword('article.html')">文章阅读📃</button>
     </div>
+    <span class="corner-cat">🐱</span>
+    <span class="corner-rabbit">🐰</span>
   </div>
 </div>
 
-<!-- ===================== 页脚 ===================== -->
 <footer>Original Character | 木乔的私人OC世界</footer>
 
-<!-- ===================== 深浅模式切换 JS ===================== -->
 <script>
-  // 获取按钮和页面主体
-  const themeToggle = document.getElementById('themeToggle');
-  const body = document.body;
-
-  // 读取本地保存的主题（记住用户上次选择）
-  const savedTheme = localStorage.getItem('ocTheme');
-
-  // 如果保存的是深色，默认加载深色模式
-  if (savedTheme === 'dark') {
-    body.classList.add('dark-mode');
-    themeToggle.innerText = '切换浅色模式';
-  }
-
-  // 点击按钮切换主题
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode'); // 切换模式
-
-    // 根据模式修改按钮文字
-    if (body.classList.contains('dark-mode')) {
-      themeToggle.innerText = '切换浅色模式';
-      localStorage.setItem('ocTheme', 'dark');
-    } else {
-      themeToggle.innerText = '切换深色模式';
-      localStorage.setItem('ocTheme', 'light');
-    }
-  });
+// 密码验证（完全保留你的原有功能）
+const pwd_kyon = "Kyon", pwd_kaolu = "烤炉", pwd_wenzhang = "文章";
+function checkPassword(page) {
+  let pwd, title;
+  if(page==="Kyon.html"){pwd=pwd_kyon;title="Kyon 档案"}
+  else if(page==="kaolu.html"){pwd=pwd_kaolu;title="烤炉先生"}
+  else if(page==="article.html"){pwd=pwd_wenzhang;title="他们的故事"}
+  let input=prompt("请输入【"+title+"】密码: ");
+  input===pwd?window.location.href=page:alert("密码错误，请重试");
+}
 </script>
 
-<!-- ===================== 密码验证功能 ===================== -->
+<!-- 通用主题切换JS -->
 <script>
-  // 三个页面的密码（可自行修改）
-  const pwd_kyon = "Kyon";
-  const pwd_kaolu = "烤炉";
-  const pwd_wenzhang = "文章";
-
-  // 密码验证主函数
-  function checkPassword(page) {
-    let pwd;   // 正确密码
-    let title; // 弹窗提示文字
-
-    // 根据不同页面匹配密码
-    if (page === "Kyon.html") {
-      pwd = pwd_kyon;
-      title = "Kyon 档案";
-    } else if (page === "kaolu.html") {
-      pwd = pwd_kaolu;
-      title = "烤炉先生";
-    } else if (page === "article.html") {
-      pwd = pwd_wenzhang;
-      title = "他们的故事";
-    }
-
-    // 弹出输入框
-    let input = prompt("请输入【" + title + "】密码: ");
-    // 正确 → 跳转；错误 → 提示
-    if (input === pwd) {
-      window.location.href = page;
-    } else {
-      alert("密码错误，请重试");
-    }
-  }
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const savedTheme = localStorage.getItem('ocTheme');
+if(savedTheme==='dark'){body.classList.add('dark-mode');themeToggle.textContent='切换浅色模式'}
+themeToggle.addEventListener('click',()=>{
+  body.classList.toggle('dark-mode');
+  body.classList.contains('dark-mode')?(themeToggle.textContent='切换浅色模式',localStorage.setItem('ocTheme','dark')):(themeToggle.textContent='切换深色模式',localStorage.setItem('ocTheme','light'))
+});
 </script>
 </body>
 </html>
