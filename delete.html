@@ -17,47 +17,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+在未来的某一天
+也许会重新开放...
 
 
 
@@ -69,10 +30,24 @@
 
     <!-- 返回按钮 -->
     <div style="margin-top:25px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button class="oc-btn" onclick="history.back()">← 返回上一页</button>
+      <button class="oc-btn" onclick="goBack()">← 返回上一页</button>
       <button class="oc-btn" onclick="location.href='article.html'">📖 文章目录</button>
     </div>
   </div>
 </div>
+
+<script>
+// 更可靠的返回函数
+function goBack() {
+  // 尝试使用 history.back()
+  if(window.history.length > 1) {
+    window.history.back();
+  } else {
+    // 如果历史记录为空，返回文章目录
+    window.location.href = 'article.html';
+  }
+}
+</script>
+
 </body>
 </html>

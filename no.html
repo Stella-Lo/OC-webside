@@ -3,76 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>没写 | 木乔的OC世界</title>
+  <title>待创作 | 木乔的OC世界</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
+
+<a href="article.html" class="back-home">返回目录</a>
+<button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
+
+<div class="container" style="margin-top: 120px;">
   <div class="card">
-    <h2>什么也没有！</h2>
-    <hr style="margin:12px 0;opacity:0.2;">
-    <p style="line-height:1.9; white-space:pre-line;">
-
-没写！！
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-我都说没写了！
-
-    </p>
-
-    <!-- 返回按钮 -->
+    <h2>📝 待创作</h2>
+    <p>这篇文章还在构思中...</p>
+    <p>敬请期待后续更新！</p>
+    
     <div style="margin-top:25px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button class="oc-btn" onclick="history.back()">← 返回上一页</button>
+      <button class="oc-btn" onclick="goBack()">← 返回上一页</button>
       <button class="oc-btn" onclick="location.href='article.html'">📖 文章目录</button>
     </div>
   </div>
 </div>
+
+<script>
+// 更可靠的返回函数
+function goBack() {
+  // 尝试使用 history.back()
+  if(window.history.length > 1) {
+    window.history.back();
+  } else {
+    // 如果历史记录为空，返回文章目录
+    window.location.href = 'article.html';
+  }
+}
+
+// 主题切换功能
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const savedTheme = localStorage.getItem('ocTheme');
+
+if(savedTheme === 'dark'){
+  body.classList.add('dark-mode');
+  themeToggle.textContent = '切换浅色模式';
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  if(body.classList.contains('dark-mode')){
+    themeToggle.textContent = '切换浅色模式';
+    localStorage.setItem('ocTheme','dark');
+  }else{
+    themeToggle.textContent = '切换深色模式';
+    localStorage.setItem('ocTheme','light');
+  }
+});
+</script>
+
 </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Always | 木乔的OC世界</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- 深浅色切换按钮（全站统一迷你款） -->
+  <button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
+
+  <div class="container">
+    <!-- 恢复原有卡片结构 -->
+    <div class="card">
+      <h2>Always</h2>
+      <p>某个小企划，但是不知道会不会写下去呢
+      </p>
+      <hr style="margin:16px 0;opacity:0.2;">
+
+      <!-- 文章内容（自动换行） -->
+      <div id="articleContent" style="line-height: 1.8; white-space: pre-wrap;">
+        雨声密得像一张网，裹挟着整个世界，寒风透过伞的缝隙钻进衣领，冻得他的肩膀微微缩了一下。抬手收起伞，水珠顺着伞面向下滑落，在地面砸开一朵朵小水花。Kyon盯着地上的水渍，忽然水渍晃了两下，倒映出他一个人的身影。他盯着看了两秒，忽然弯腰将伞放在了墙角，空出了身旁的位置。
+
+        门在身后合拢，发出轻微的闷响。他走向厨房，手指触到冰箱门上的黄色便利贴。“记得吃早餐”几个字旁，用水彩笔画着一只小猫和一只兔子。冰箱门打开的嗡鸣声中，冷气混着灯光涌出，照亮了里面并排躺着的两盒牛奶。
+
+        其中一盒的包装有些许压痕。是那次逛超市时，被悄悄塞进购物车的。他记得自己当时一边说着“不用了”，一边将牛奶放回货架，而有人只是笑着，又重新把它们放了回来，顺手理了理旁边的零食。
+
+        “要多喝牛奶。”——声音轻得像耳语。
+
+        Kyon盯着那处压痕，下意识地在心里回了一句：“你也是。”
+
+        念头落下的瞬间，他整个人僵在原地。冰箱的冷气扑在脸上，他却觉得那股寒意是从胸腔里漫出来的。一句迟到的回应，悬在空荡荡的厨房里，再也落不到谁的耳中。
+
+        时光流过，墙角的伞渐渐干了。某个清晨，Kyon醒来，发现冰箱门上那张黄色的便利贴，边角已经微微卷起。
+
+        他没有撕下它，也没有试图抚平。只是伸出手指，极轻地拂过那只用水彩笔画出的小兔子。指尖传来的，不再是最初那种尖锐的刺痛，而是一种熟悉的钝感。
+
+        他打开冰箱，里面不再有特地留出的牛奶。但他开始自己购买，有时会挑一盒包装略有瑕疵的。递给收银员时，他的嘴角会牵起一个很浅的弧度。
+
+        雨还会下，风也依旧会钻进衣领。但他知道，有些东西已经不同了。那份温度沉在身体里，成了他面对这个世界时，眼底那抹沉静的光。
+      </div>
+
+      <!-- 两个按钮：返回目录 + 返回主页 -->
+      <div class="btn-group" style="margin-top: 30px;">
+        <button class="oc-btn" onclick="location.href='article.html'">返回目录</button>
+        <button class="oc-btn" onclick="location.href='index.html'">返回主页</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>Original Character | 木乔的私人OC世界</footer>
+
+  <!-- 全站通用主题切换JS -->
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('ocTheme');
+
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      themeToggle.textContent = '切换浅色模式';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        themeToggle.textContent = '切换浅色模式';
+        localStorage.setItem('ocTheme', 'dark');
+      } else {
+        themeToggle.textContent = '切换深色模式';
+        localStorage.setItem('ocTheme', 'light');
+      }
+    });
+  </script>
+</body>
+
+</html>
