@@ -12,9 +12,9 @@
 
 <body>
 
-<!-- 固定顶部：返回首页 + 迷你深浅切换按钮（全站统一） -->
-<a href="index.html" class="back-home">返回首页</a>
-<button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
+    <!-- 固定顶部：返回首页 + 迷你深浅切换按钮（全站统一） -->
+    <a href="index.html" class="back-home">返回首页</a>
+    <button class="theme-toggle-btn" id="themeToggle">切换深色模式</button>
 
     <!-- 页面主体居中容器 -->
     <div class="container" style="margin-top: 120px;">
@@ -115,8 +115,10 @@
             <!-- 板块1：成长背景（长文本自由书写） -->
             <div class="section-block">
                 <h3>▌成长背景</h3>
-                <p>这里填写角色的成长环境、童年经历、家庭氛围等长文本内容，不受表格限制，可自由分段、换行，写详细的故事内容。</p>
-                <p>可自由补充段落，写多段长文本，适配大段的故事描述。</p>
+                <p>Kyon其实曾经是流浪猫，后来被好心的主人收养，和烤炉一起过了幸福的一生。</p>
+                <p>其实这家伙在刚开始来到这个家的时候非常单纯（？）大概是害怕吧，很凶，还挠了主人。那时候小猫还没打疫苗，
+                    主人只好驱车前往宠物医院先给Kyon打了疫苗然后奔向最近一家医院打狂犬病疫苗。可谓来时路非常坎坷。
+                    不过后来发现这样做会让人受伤以后，就变得非常谨慎。</p>
             </div>
 
             <!-- 板块2：关键人生节点（时间线列表，清晰明了） -->
@@ -125,7 +127,8 @@
                 <ul>
                     <li>节点1：某个冬夜，被心善的主人收养，自此有了家</li>
                     <li>节点2：发现烤炉先生并非善类。“原来你会说话！”</li>
-                    <li>节点3：可自由增减节点，用列表清晰呈现角色的人生时间线</li>
+                    <li>节点3：和烤炉先生互表心意
+                    </li>
                 </ul>
             </div>
 
@@ -138,7 +141,7 @@
             <!-- 板块4：人生目标与执念 -->
             <div class="section-block">
                 <h3>▌人生目标与执念</h3>
-                <p>这里填写角色的人生追求、想要守护的人/事、内心的执念、未完成的心愿等内容。</p>
+                <p>和烤炉先生在一起。内心还是有妈妈的。</p>
             </div>
             <span class="corner-cat">🐱</span>
         </div>
@@ -173,7 +176,7 @@
             <table class="role-table">
                 <tr>
                     <th>隐藏设定</th>
-                    <td>有时会在梦中变成普通人形，但醒来后就忘记了</td> <!-- 这里填写不对外的隐藏人设、秘密 -->
+                    <td>有时会在梦中变成原始形态，但醒来后就忘记了</td> <!-- 这里填写不对外的隐藏人设、秘密 -->
                 </tr>
                 <tr>
                     <th>特殊能力/设定</th>
@@ -181,7 +184,7 @@
                 </tr>
                 <tr>
                     <th>其他备注</th>
-                    <td>最喜欢在烤炉先生怀里撒娇</td> <!-- 这里填写其他想要补充的设定 -->
+                    <td></td> <!-- 这里填写其他想要补充的设定 -->
                 </tr>
             </table>
             <span class="corner-cat">🐱</span>
@@ -195,27 +198,27 @@
 
     <footer>Original Character | 木乔的OC世界</footer>
 
-<!-- 通用深浅模式切换JS（跨页同步+记忆） -->
-<script>
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-const savedTheme = localStorage.getItem('ocTheme');
+    <!-- 通用深浅模式切换JS（跨页同步+记忆） -->
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('ocTheme');
 
-if(savedTheme === 'dark'){
-  body.classList.add('dark-mode');
-  themeToggle.textContent = '切换浅色模式';
-}
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '切换浅色模式';
+        }
 
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  if(body.classList.contains('dark-mode')){
-    themeToggle.textContent = '切换浅色模式';
-    localStorage.setItem('ocTheme','dark');
-  }else{
-    themeToggle.textContent = '切换深色模式';
-    localStorage.setItem('ocTheme','light');
-  }
-});
-</script>
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '切换浅色模式';
+                localStorage.setItem('ocTheme', 'dark');
+            } else {
+                themeToggle.textContent = '切换深色模式';
+                localStorage.setItem('ocTheme', 'light');
+            }
+        });
+    </script>
 
 </html>
