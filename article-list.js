@@ -49,6 +49,7 @@ const articleData = [
     category: "🔹 随笔杂记",
     list: [
       { title: "凄美地", url: "note-01.html" },
+      { title: "520贺文", url: "520.html" },
     ]
   },
   {
